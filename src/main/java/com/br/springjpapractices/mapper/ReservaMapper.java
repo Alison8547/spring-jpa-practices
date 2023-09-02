@@ -12,12 +12,12 @@ import org.springframework.stereotype.Component;
 public class ReservaMapper {
 
     private final ModelMapper mapper;
-
     public ReservaResponse toReservaResponse(Reserva reserva) {
         return mapper.map(reserva, ReservaResponse.class);
     }
 
     public Reserva toReservaEntity(ReservaRequest reservaRequest) {
+        mapper.getConfiguration().setAmbiguityIgnored(true);
         return mapper.map(reservaRequest, Reserva.class);
     }
 }
