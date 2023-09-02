@@ -38,5 +38,6 @@ public class Endereco {
     private Integer idUsuario;
 
     @ManyToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 }
