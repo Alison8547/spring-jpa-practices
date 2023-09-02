@@ -1,6 +1,5 @@
 package com.br.springjpapractices.dto.request;
 
-import com.br.springjpapractices.enums.Status;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
@@ -13,7 +12,7 @@ import javax.validation.constraints.NotNull;
 public class ReservaRequest {
 
     @NotNull
-    private Status status;
+    private String status;
 
     @NotNull
     private Integer idUsuario;

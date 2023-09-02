@@ -31,9 +31,11 @@ public class Reserva {
     private Integer idDestino;
 
     @ManyToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     @ManyToOne
+    @JoinColumn(name = "id_destino")
     private Destino destino;
 
 }
