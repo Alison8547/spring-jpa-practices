@@ -12,8 +12,8 @@ import javax.validation.Valid;
 @RequestMapping
 public interface ReservaController {
 
-    @PostMapping("/create-reservation")
-    ResponseEntity<ReservaResponse> createReservation(@Valid @RequestBody ReservaRequest reservaRequest);
+    @PostMapping("/create-reservation/{idUser}/{idDestiny}")
+    ResponseEntity<ReservaResponse> createReservation(@PathVariable(name = "idUser") Integer idUser, @PathVariable(name = "idDestiny") Integer idDestiny, @Valid @RequestBody ReservaRequest reservaRequest);
 
     @GetMapping("/reservation/{id}")
     ResponseEntity<ReservaResponse> getReservation(@PathVariable(name = "id") Integer id);

@@ -15,8 +15,8 @@ public class EnderecoControllerImpl implements EnderecoController {
     private final EnderecoService enderecoService;
 
     @Override
-    public ResponseEntity<EnderecoResponse> createAddress(EnderecoRequest enderecoRequest) {
-        return new ResponseEntity<>(enderecoService.createAddress(enderecoRequest), HttpStatus.CREATED);
+    public ResponseEntity<EnderecoResponse> createAddress(Integer idUser, EnderecoRequest enderecoRequest) {
+        return new ResponseEntity<>(enderecoService.createAddress(idUser, enderecoRequest), HttpStatus.CREATED);
     }
 
     @Override

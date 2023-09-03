@@ -1,6 +1,8 @@
 package com.br.springjpapractices.service;
 
+import com.br.springjpapractices.domain.Destino;
 import com.br.springjpapractices.domain.Reserva;
+import com.br.springjpapractices.domain.Usuario;
 import com.br.springjpapractices.dto.request.ReservaRequest;
 import com.br.springjpapractices.dto.response.ReservaResponse;
 import com.br.springjpapractices.enums.Status;
@@ -20,22 +22,22 @@ public class ReservaServiceImpl implements ReservaService {
     private final DestinoServiceImpl destinoService;
 
     @Override
-    public ReservaResponse createReservation(ReservaRequest reservaRequest) {
+    public ReservaResponse createReservation(Integer idUser, Integer idDestiny, ReservaRequest reservaRequest) {
 
         Reserva reservaEntity = mapper.toReservaEntity(reservaRequest);
+        Usuario user = usuarioService.getUser(idUser);
+        Destino destiny = destinoService.getDestiny(idDestiny);
 
         for (int i = 0; i < Status.values().length; i++) {
             Status[] values = Status.values();
             if (reservaRequest.getStatus().equalsIgnoreCase(values[i].getDescricao())) {
                 reservaEntity.setStatus(values[i]);
-            } else {
-                throw new BusinessException("Status invalid!");
             }
         }
-        reservaEntity.setUsuario(usuarioService.getUser(reservaEntity.getIdUsuario()));
-        reservaEntity.setDestino(destinoService.getDestiny(reservaEntity.getIdDestino()));
-        reservaEntity.setIdUsuario(reservaEntity.getIdUsuario());
-        reservaEntity.setIdDestino(reservaEntity.getIdDestino());
+        reservaEntity.setUsuario(user);
+        reservaEntity.setDestino(destiny);
+        reservaEntity.setIdUsuario(user.getId());
+        reservaEntity.setIdDestino(destiny.getId());
 
         reservaRepository.save(reservaEntity);
         return mapper.toReservaResponse(reservaEntity);

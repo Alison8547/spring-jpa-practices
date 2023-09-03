@@ -1,29 +1,20 @@
-package com.br.springjpapractices.dto.request;
+package com.br.springjpapractices.dto.response;
 
 import lombok.*;
-
-import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EnderecoRequest {
+public class UsuarioEnderecoResponse {
 
-    @NotBlank
+    private Integer id;
+    private String nome;
+    private String email;
     private String rua;
-
-    @NotBlank
     private String numero;
-
-    @NotBlank
     private String cidade;
-
-    @NotBlank
     private String estado;
-
-    @NotBlank
     private String pais;
-
 }

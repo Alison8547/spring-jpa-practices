@@ -13,10 +13,4 @@ public class ReservaRequest {
 
     @NotNull
     private String status;
-
-    @NotNull
-    private Integer idUsuario;
-
-    @NotNull
-    private Integer idDestino;
 }

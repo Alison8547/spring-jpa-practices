@@ -1,6 +1,7 @@
 package com.br.springjpapractices.service;
 
 import com.br.springjpapractices.domain.Endereco;
+import com.br.springjpapractices.domain.Usuario;
 import com.br.springjpapractices.dto.request.EnderecoRequest;
 import com.br.springjpapractices.dto.response.EnderecoResponse;
 import com.br.springjpapractices.exception.BusinessException;
@@ -18,9 +19,13 @@ public class EnderecoServiceImpl implements EnderecoService {
     private final UsuarioServiceImpl usuarioService;
 
     @Override
-    public EnderecoResponse createAddress(EnderecoRequest enderecoRequest) {
+    public EnderecoResponse createAddress(Integer idUser, EnderecoRequest enderecoRequest) {
         Endereco enderecoEntity = mapper.toEnderecoEntity(enderecoRequest);
-        enderecoEntity.setUsuario(usuarioService.getUser(enderecoRequest.getIdUsuario()));
+        Usuario user = usuarioService.getUser(idUser);
+
+        enderecoEntity.setUsuario(user);
+        enderecoEntity.setIdUsuario(user.getId());
+
         enderecoRepository.save(enderecoEntity);
 
         return mapper.toEnderecoResponse(enderecoEntity);
