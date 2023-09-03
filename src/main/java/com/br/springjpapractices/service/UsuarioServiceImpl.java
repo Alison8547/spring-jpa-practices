@@ -2,6 +2,7 @@ package com.br.springjpapractices.service;
 
 import com.br.springjpapractices.domain.Usuario;
 import com.br.springjpapractices.dto.request.UsuarioRequest;
+import com.br.springjpapractices.dto.response.UsuarioCountEnderecoResponse;
 import com.br.springjpapractices.dto.response.UsuarioEnderecoResponse;
 import com.br.springjpapractices.dto.response.UsuarioResponse;
 import com.br.springjpapractices.exception.BusinessException;
@@ -39,6 +40,16 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public long totalAddressUser() {
         return usuarioRepository.totalAddress();
+    }
+
+    @Override
+    public List<UsuarioResponse> listOrderDataNascimento() {
+        return usuarioRepository.orderByDateNascimento();
+    }
+
+    @Override
+    public List<UsuarioCountEnderecoResponse> listUserCountAddress() {
+        return usuarioRepository.listUserCountAddress();
     }
 
 

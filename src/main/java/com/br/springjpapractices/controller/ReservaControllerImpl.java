@@ -15,8 +15,8 @@ public class ReservaControllerImpl implements ReservaController {
     private final ReservaService reservaService;
 
     @Override
-    public ResponseEntity<ReservaResponse> createReservation(ReservaRequest reservaRequest) {
-        return new ResponseEntity<>(reservaService.createReservation(reservaRequest), HttpStatus.CREATED);
+    public ResponseEntity<ReservaResponse> createReservation(Integer idUser, Integer idDestiny, ReservaRequest reservaRequest) {
+        return new ResponseEntity<>(reservaService.createReservation(idUser, idDestiny, reservaRequest), HttpStatus.CREATED);
     }
 
     @Override

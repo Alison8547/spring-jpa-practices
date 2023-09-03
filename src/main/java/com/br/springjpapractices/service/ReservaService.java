@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 public interface ReservaService {
 
     @Transactional
-    ReservaResponse createReservation(ReservaRequest reservaRequest);
+    ReservaResponse createReservation(Integer idUser, Integer idDestiny, ReservaRequest reservaRequest);
 
     ReservaResponse findReservation(Integer id);
 }

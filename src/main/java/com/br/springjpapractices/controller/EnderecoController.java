@@ -12,8 +12,8 @@ import javax.validation.Valid;
 @RequestMapping
 public interface EnderecoController {
 
-    @PostMapping("/create-address")
-    ResponseEntity<EnderecoResponse> createAddress(@Valid @RequestBody EnderecoRequest enderecoRequest);
+    @PostMapping("/create-address/{idUser}")
+    ResponseEntity<EnderecoResponse> createAddress(@PathVariable(name = "idUser") Integer idUser, @Valid @RequestBody EnderecoRequest enderecoRequest);
 
     @GetMapping("/address/{id}")
     ResponseEntity<EnderecoResponse> getAddress(@PathVariable(name = "id") Integer id);

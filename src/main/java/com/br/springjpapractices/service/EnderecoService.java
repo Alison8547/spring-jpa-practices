@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 public interface EnderecoService {
 
     @Transactional
-    EnderecoResponse createAddress(EnderecoRequest enderecoRequest);
+    EnderecoResponse createAddress(Integer idUser, EnderecoRequest enderecoRequest);
 
     EnderecoResponse findAddress(Integer id);
 
