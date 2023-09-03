@@ -4,6 +4,7 @@ package com.br.springjpapractices.service;
 import com.br.springjpapractices.dto.request.UsuarioRequest;
 import com.br.springjpapractices.dto.response.UsuarioCountEnderecoResponse;
 import com.br.springjpapractices.dto.response.UsuarioEnderecoResponse;
+import com.br.springjpapractices.dto.response.UsuarioReservaDestinoResponse;
 import com.br.springjpapractices.dto.response.UsuarioResponse;
 
 import javax.transaction.Transactional;
@@ -23,4 +24,6 @@ public interface UsuarioService {
     List<UsuarioResponse> listOrderDataNascimento();
 
     List<UsuarioCountEnderecoResponse> listUserCountAddress();
+
+    List<UsuarioReservaDestinoResponse> listUserReservation(Integer idUser);
 }
