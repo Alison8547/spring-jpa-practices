@@ -3,9 +3,11 @@ package com.br.springjpapractices.repository;
 import com.br.springjpapractices.domain.Usuario;
 import com.br.springjpapractices.dto.response.UsuarioCountEnderecoResponse;
 import com.br.springjpapractices.dto.response.UsuarioEnderecoResponse;
+import com.br.springjpapractices.dto.response.UsuarioReservaDestinoResponse;
 import com.br.springjpapractices.dto.response.UsuarioResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -39,4 +41,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     List<UsuarioCountEnderecoResponse> listUserCountAddress();
 
 
+    @Query("select new com.br.springjpapractices.dto.response.UsuarioReservaDestinoResponse(u.id,u.nome,u.email,r.status,d.nome,d.descricao) from Usuario u left join Reserva r" +
+            " on r.idUsuario = u.id " +
+            " left join Destino d on d.id = r.idDestino " +
+            "where :idUser is null or u.id = :idUser")
+    List<UsuarioReservaDestinoResponse> listUserReservation(@Param("idUser") Integer idUser);
 }

@@ -3,6 +3,7 @@ package com.br.springjpapractices.controller;
 import com.br.springjpapractices.dto.request.UsuarioRequest;
 import com.br.springjpapractices.dto.response.UsuarioCountEnderecoResponse;
 import com.br.springjpapractices.dto.response.UsuarioEnderecoResponse;
+import com.br.springjpapractices.dto.response.UsuarioReservaDestinoResponse;
 import com.br.springjpapractices.dto.response.UsuarioResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -32,4 +33,7 @@ public interface UsuarioController {
 
     @GetMapping("/user-counter-address")
     ResponseEntity<List<UsuarioCountEnderecoResponse>> listUserCountAddress();
+
+    @GetMapping("/user-reservation")
+    ResponseEntity<List<UsuarioReservaDestinoResponse>> listUserReservation(@RequestParam(required = false) Integer idUser);
 }

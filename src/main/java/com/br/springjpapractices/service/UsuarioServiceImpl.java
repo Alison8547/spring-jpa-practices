@@ -4,6 +4,7 @@ import com.br.springjpapractices.domain.Usuario;
 import com.br.springjpapractices.dto.request.UsuarioRequest;
 import com.br.springjpapractices.dto.response.UsuarioCountEnderecoResponse;
 import com.br.springjpapractices.dto.response.UsuarioEnderecoResponse;
+import com.br.springjpapractices.dto.response.UsuarioReservaDestinoResponse;
 import com.br.springjpapractices.dto.response.UsuarioResponse;
 import com.br.springjpapractices.exception.BusinessException;
 import com.br.springjpapractices.mapper.UsuarioMapper;
@@ -50,6 +51,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public List<UsuarioCountEnderecoResponse> listUserCountAddress() {
         return usuarioRepository.listUserCountAddress();
+    }
+
+    @Override
+    public List<UsuarioReservaDestinoResponse> listUserReservation(Integer idUser) {
+        return usuarioRepository.listUserReservation(idUser);
     }
 
 
